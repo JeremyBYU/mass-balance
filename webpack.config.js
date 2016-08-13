@@ -59,11 +59,13 @@ module.exports = {
             // Support for *.json files.
             { test: /\.json$/, loader: 'json-loader' },
 
+            { test: /\.png$/, loader: "url-loader?mimetype=image/png" },
+
             // Support for CSS as raw text
             { test: /\.css$/, loaders: ['style', 'css'] },
 
             // support for .html as raw text
-            { test: /\.html$/, loader: 'raw-loader', exclude: [ root('src/index.html') ] },
+            { test: /\.html$/, loader: 'html-loader', exclude: [ root('src/index.html') ] },
 
             // if you add a loader include the resolve file extension above
 
