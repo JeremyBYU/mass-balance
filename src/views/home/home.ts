@@ -6,7 +6,7 @@ import { VueComponent } from 'vue-typescript'
 })
 export class HomeComponent extends Vue {
 
-    package:string = 'vue-typescript';
-    repo:string = 'https://github.com/itsFrank/vue-typescript';
+    package: string = 'vue-typescript';
+    repo: string = 'https://github.com/itsFrank/vue-typescript';
 
 }

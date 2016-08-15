@@ -14,6 +14,7 @@ require('./main.scss') // global css
   options parameter. 
 */
 import './components/navbar/navbar'
+import './components/stage/stage'
 
 import { HomeComponent } from './views/home/home'
 import { AboutComponent } from './views/about/about'
