@@ -4,3 +4,17 @@
 .remove-background-color {
     background-color: inherit !important;
 }
+
+@media (max-width: 768px) {
+    .center {
+        margin: auto;
+        width: 75%;
+    }
+}
+
+@media (max-width: 500px) {
+    .center {
+        margin: auto;
+        width: 100%;
+    }
+}

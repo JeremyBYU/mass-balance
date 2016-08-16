@@ -29,14 +29,17 @@ export class Stage extends Vue {
     const params = { width: this.width, height: this.height }
     this.two = new Two(params).appendTo(this.$el.children[0])
 
+    const BUFFER = 40
     // two has convenience methods to create shapes.
     const startingX = 10
     const circle = this.two.makeCircle(CIRCLE_SIZE * 1.25, this.height / 2, CIRCLE_SIZE)
     const rect = this.two.makeRectangle(this.width / 2, this.height / 2, 100, 100)
     // TEXT
-    const text1 = new Two.Text('IN', this.width / 4, this.height / 2 - 30, FONT_STYLE)
-    const text2 = new Two.Text('OUT', this.width - this.width / 4, this.height / 2 - 30, FONT_STYLE)
-    this.two.add(text1, text2)
+    const text1 = new Two.Text('IN', this.width / 4 - BUFFER, this.height / 2 - BUFFER, FONT_STYLE)
+    const text2 = new Two.Text('OUT', this.width - this.width / 4 + BUFFER, this.height / 2 - BUFFER, FONT_STYLE)
+    const text3 = new Two.Text('1 BALL/S', this.width / 4 - BUFFER, this.height / 2 + BUFFER, FONT_STYLE)
+    const text4 = new Two.Text('1 BALL/S', this.width - this.width / 4 + BUFFER, this.height / 2 + BUFFER, FONT_STYLE)
+    this.two.add(text1, text2, text3, text4)
 
     // The object returned has many stylable properties:
     circle.fill = '#FF8000'
