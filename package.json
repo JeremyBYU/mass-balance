@@ -33,7 +33,9 @@
   },
   "dependencies": {
     "bulma": "^0.1.2",
+    "katex": "^0.6.0",
     "keen-ui": "^0.8.9",
+    "svgjs": "^2.2.5",
     "vue": "^1.0.26",
     "vue-router": "^0.7.13",
     "vue-typescript": "^0.5.2"

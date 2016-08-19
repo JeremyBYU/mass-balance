@@ -1,5 +1,7 @@
 import { VueComponent, Prop, Watch } from 'vue-typescript'
 import { CIRCLE_SIZE, FONT_STYLE } from '../../utils/constants'
+const SVG = require('svgjs')
+console.log(SVG)
 declare const Two: any // Two.js Namespace
 
 @VueComponent({
@@ -27,20 +29,24 @@ export class Stage extends Vue {
   }
   constructScene() {
     const params = { width: this.width, height: this.height }
-    this.two = new Two(params).appendTo(this.$el.children[0])
-
+    console.log(this.$el.querySelector('.svg-input'))
+    this.two = new Two(params).appendTo(this.$el.querySelector('.stage'))
     const BUFFER = 40
     // two has convenience methods to create shapes.
     const startingX = 10
     const circle = this.two.makeCircle(CIRCLE_SIZE * 1.25, this.height / 2, CIRCLE_SIZE)
     const rect = this.two.makeRectangle(this.width / 2, this.height / 2, 100, 100)
+    const input = this.two.interpret(this.$el.querySelector('.svg-input'))
+    input.translation.set(-20,0)
     // TEXT
     const text1 = new Two.Text('IN', this.width / 4 - BUFFER, this.height / 2 - BUFFER, FONT_STYLE)
     const text2 = new Two.Text('OUT', this.width - this.width / 4 + BUFFER, this.height / 2 - BUFFER, FONT_STYLE)
     const text3 = new Two.Text('1 BALL/S', this.width / 4 - BUFFER, this.height / 2 + BUFFER, FONT_STYLE)
     const text4 = new Two.Text('1 BALL/S', this.width - this.width / 4 + BUFFER, this.height / 2 + BUFFER, FONT_STYLE)
-    this.two.add(text1, text2, text3, text4)
-
+    const textGroup = this.two.makeGroup(text1, text2, text3, text4)
+    this.two.add(textGroup, input)
+    console.log(input, textGroup)
+    input.rotation = 45
     // The object returned has many stylable properties:
     circle.fill = '#FF8000'
     circle.stroke = 'orangered' // Accepts all valid css color

@@ -13,8 +13,11 @@ require('./main.scss') // global css
   to do that if you are defining a components{} object in the @VueComponent
   options parameter. 
 */
+
+// Import Components!
 import './components/navbar/navbar'
 import './components/stage/stage'
+import './components/katex/katex'
 
 import { HomeComponent } from './views/home/home'
 import { AboutComponent } from './views/about/about'

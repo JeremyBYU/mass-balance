@@ -5,3 +5,4 @@
 // require('bootstrap/dist/js/bootstrap.min.js')
 
 require('bulma/css/bulma.css')
+require('katex/dist/katex.min.css')
