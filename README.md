@@ -1,14 +1,11 @@
-# vue-typescript-seed
-A starter project for [vue-typescript](https://github.com/itsFrank/vue-typescript) using webpack and bootstrap
+# Mass Balance Tutorial
 
-This seed repo comes with all you need to start building a vuejs project using typescript.
+Checkout the live website [here](https://jeremybyu.github.io/mass-balance/)
 
 Packages included:
 - vue
 - vue-router
-- webpack (and all the loaders and utilities necessary)
-- bootstrap 3
-- jquery 2.2.4
+
 
 Scripts:
 
