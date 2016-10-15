@@ -34,6 +34,7 @@
 <section>
   <div class="hero-body">
     <div class="container">
+      <!--Example One-->
       <div class="columns">
         <div class="column">
           <div class="heading">            
@@ -41,14 +42,35 @@
               1 Ball In, 1 Ball Out
             </h3>
           </div>
-            <stage auto-start="true"></stage>
+          <stage auto-start="true"></stage>
         </div>
         <div class="column is-three-quarters">
           <div class="content">
-            <h2 class="title">Example 1</h2>
-            <p>In this example, a ball is entering the blue box at 1 Ball per second, or 1 Ball/s </p>
-            <p>A mass balance of the </p>
-            <katex expression="1 ball/s =  1 ball/s + 0 ball/s"></katex>
+            <h2 class="title">Example One</h2>
+            <p>In this example, an orange ball is entering the blue box at a <em>rate</em> of 1 ball per second, or 1 ball/s. The orange ball is also leaving at 1 ball/s. We can express this with a mass balance equation as follows:</p>
+            <div style="max-width:275px" class="box">
+              <katex expression="1ball/s = 1ball/s + 0ball/s"></katex>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Example Two-->
+      <div class="columns">
+
+        <div class="column">
+          <div class="heading">            
+            <h3 class="subtitle">
+              1 Ball In, 1 Ball Out
+            </h3>
+          </div>
+          <stage auto-start="true" show-controls="true"></stage>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="content">
+            <h2 class="title">Example Two</h2>
+            <p>In this example you can change the <em>rate</em> at which the orange balls enter and leave the blue box. You can adjust this rate up to 5 ball/s. </p>
+            <p>Notice how the orange balls will <em>accumulate</em> in the blue box if the <em>IN</em> rate is greater than the <em>OUT</em> rate  </p>
+
           </div>
         </div>
       </div>

@@ -1,4 +1,21 @@
-<div class="columns center">
-  <div class="column stage">
-  </div>
+<div>
+	<div class="control is-horizontal" v-show="showControls" style="margin-top:10px">
+		<p class="control has-addons has-addons-centered">
+      <a class="button is-info" v-on:click="toggleState()">
+        {{playbackText}}
+      </a>
+      <input class="input" type="number" placeholder="Balls in" v-model="circleIn" max="5" min="0" number>
+			<a class="button is-info is-disabled">
+        -
+      </a>
+      <input class="input" type="number" placeholder="Ball out" v-model="circleOut" max="5" min="0" number>
+      <a class="button is-warning" v-on:click="reset()">
+        Reset
+      </a>
+		</p>
+	</div>
+	<div class="columns center">
+		<div class="column stage">
+		</div>
+	</div>
 </div>
