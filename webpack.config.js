@@ -101,7 +101,8 @@ module.exports = {
             // jQuery: 'jquery',
             // $: 'jquery',
             // jquery: 'jquery',
-            Vue: 'vue'
+            Vue: 'vue',
+            Visibility: 'visibilityjs'
         })
     ],
 
