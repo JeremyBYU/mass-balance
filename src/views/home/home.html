@@ -1,80 +1,64 @@
 <section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <div class="heading">
-        <h1 class="title">What is a Mass Balance?</h1>
-        <h2 class="subtitle">
-          Using the law of conservation of mass
-        </h2>
-      </div>
-      <div class="content padding-top is-medium">
-        <p>
-          A mass balance is an engineering technique where one applies the <em>law of conservation of mass</em> on a physical system to determine new information from it.
-          So what is the law of conservation of mass?
-        </p>
-        <blockquote class="remove-background-color">
-          The law of conservation of mass states that for any system closed to all transfers of matter and energy, 
-          the mass of the system must remain constant over time &hellip;
-          <strong style="color:white">The law implies that mass can neither be created nor destroyed.</strong>
-        </blockquote>
-        <p>
-          From this infomation we can conclude that any mass flowing <em>IN</em> a system must be <em>ACCUMULATED</em> or flow <em>OUT</em> of said system.
-          This can be consicely defined by the following equation: &nbsp;
-          <katex expression=" \mathrm{IN} = \mathrm{OUT} + \mathrm{ACC}"></katex>
-        </p>
-        <p>
-          A mass balance applies this law to a physical system by analyzing all its <em>input</em> streams and <em>output</em> streams. Lets start with a simple example, a 2D Box (the "system") with 1 ball flowing <em>in</em>
-          and <em>out</em>.        
-        </p>
-      </div>     
-    </div>
+	<div class="hero-body">
+		<div class="container">
+			<div class="heading">
+				<h1 class="title">What is a Mass Balance?</h1>
+				<h2 class="subtitle">
+					Using the law of conservation of mass
+				</h2>
+			</div>
+			<div class="content padding-top is-medium">
+				<p>
+					A mass balance is an engineering technique where one applies the <em>law of conservation of mass</em> on a physical
+					system to determine new information from it. So what is the law of conservation of mass?
+				</p>
+				<blockquote class="remove-background-color">
+					The law of conservation of mass states that for any system closed to all transfers of matter and energy, the mass of the
+					system must remain constant over time &hellip;
+					<strong style="color:white">The law implies that mass can neither be created nor destroyed.</strong>
+				</blockquote>
+				<p>
+					From this infomation we can conclude that any mass flowing <em>IN</em> a system must be <em>ACCUMULATED</em> or flow
+					<em>OUT</em> of said system. This can be consicely defined by the following equation: &nbsp;
+					<katex expression=" \mathrm{IN} = \mathrm{OUT} + \mathrm{ACC}"></katex>
+				</p>
+				<p>
+					A mass balance applies this law to a physical system by analyzing all its <em>input</em> streams and <em>output</em>					streams. Lets start with a simple example, a 2D Box (the "system") with 1 ball flowing <em>in</em> and <em>out</em>.
+				</p>
+			</div>
+		</div>
 
-  </div>
+	</div>
 </section>
 <section>
-  <div class="hero-body">
-    <div class="container">
-      <!--Example One-->
-      <div class="columns">
-        <div class="column">
-          <div class="heading">            
-            <h3 class="subtitle">
-              1 Ball In, 1 Ball Out
-            </h3>
-          </div>
-          <stage auto-start="true"></stage>
+	<div class="hero-body">
+		<div class="container">
+			<!--Example One-->
+      <example>
+        <h3 slot="title" class="subtitle">
+          1 Ball In, 1 Ball Out
+        </h3>
+        <stage slot="stage" auto-start="true"></stage>
+        <div slot="content" class="content">
+          <h2 class="title">Example One</h2>
+          <p>In this example, an orange ball is entering the blue box at a <em>rate</em> of 1 ball per second, or 1 ball/s. The
+            orange ball is also leaving at 1 ball/s. We can express this with a mass balance equation as follows:</p>
         </div>
-        <div class="column is-three-quarters">
-          <div class="content">
-            <h2 class="title">Example One</h2>
-            <p>In this example, an orange ball is entering the blue box at a <em>rate</em> of 1 ball per second, or 1 ball/s. The orange ball is also leaving at 1 ball/s. We can express this with a mass balance equation as follows:</p>
-            <div style="max-width:275px" class="box">
-              <katex expression="1ball/s = 1ball/s + 0ball/s"></katex>
-            </div>
-          </div>
+      </example>
+		
+			<!--Example Two-->
+			<example>
+				<h3 slot="title" class="subtitle">
+					Variable Rate
+				</h3>
+        <stage slot="stage" auto-start="true" show-controls="true"></stage>
+        <div slot="content" class="content">
+						<h2 class="title">Example Two</h2>
+						<p>In this example you can change the <em>rate</em> at which the orange balls enter and leave the blue box. You can adjust
+							this rate up to 5 ball/s. </p>
+						<p>Notice how the orange balls will <em>accumulate</em> in the blue box if the <em>IN</em> rate is greater than the <em>OUT</em>							rate </p>
         </div>
-      </div>
-      <!--Example Two-->
-      <div class="columns">
-
-        <div class="column">
-          <div class="heading">            
-            <h3 class="subtitle">
-              1 Ball In, 1 Ball Out
-            </h3>
-          </div>
-          <stage auto-start="true" show-controls="true"></stage>
-        </div>
-        <div class="column is-three-quarters">
-          <div class="content">
-            <h2 class="title">Example Two</h2>
-            <p>In this example you can change the <em>rate</em> at which the orange balls enter and leave the blue box. You can adjust this rate up to 5 ball/s. </p>
-            <p>Notice how the orange balls will <em>accumulate</em> in the blue box if the <em>IN</em> rate is greater than the <em>OUT</em> rate  </p>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+			</example>
+		</div>
+	</div>
 </section>

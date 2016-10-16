@@ -1,0 +1,15 @@
+<div class="columns">
+
+	<div class="column">
+		<div class="heading">
+			<slot name="title"></slot>
+		</div>
+		<slot name="stage"></slot>
+	</div>
+	<div class="column is-three-quarters">
+		<slot name="content"></slot>
+		<div style="max-width:275px" class="box">
+			<katex :expression="message"></katex>
+		</div>
+	</div>
+</div>

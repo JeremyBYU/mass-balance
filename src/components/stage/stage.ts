@@ -13,11 +13,15 @@ export class Stage extends Vue {
   timer: any = {}
   circles: any[] = [] // The incoming circles array
   integratedCircles: any[] = []
+
+  @Watch('changeBalance', {deep: true})
   circleIn: number = 1 // number of circles going in
+  @Watch('changeBalance', {deep: true})
   circleOut: number = 1 // number of circles going out
+
   rect: any
   draw: any
-  rectHeight = 100
+  rectHeight = 100 // standard rect height
 
   @Prop width: number = 350 // default value
   @Prop height: number = 150 // default value
@@ -27,6 +31,7 @@ export class Stage extends Vue {
   @Prop initCircleIn: number = 1
   @Prop initCircleOut: number = 1
 
+
   ready() {
     this.constructScene()
     this.circleIn = this.initCircleIn
@@ -34,6 +39,7 @@ export class Stage extends Vue {
     if (this.autoStart) {
       setTimeout(() => this.startAnimation(), 100)
     }
+    this.changeBalance()
   }
   constructScene() {
     this.draw = SVG(this.$el.querySelector('.stage')).size(this.width, this.height)
@@ -42,15 +48,13 @@ export class Stage extends Vue {
     this.rect = this.draw.rect(this.width / 2, this.rectHeight).move(this.width / 4, VERT_BUFFER)
     Object.freeze(this.rect) // Freeze draw to prevent vue from watching it
     this.rect.fill('#00C8FF')
-
-
   }
   get playbackText(): string {
     return this.timer === undefined ? 'Play' : 'Pause'
   }
+
   createCircles() {
     const verticalSpacing = this.rectHeight / CIRCLE_SIZE
-    const ciclePerLine = Math.floor(this.rectHeight / verticalSpacing) // how many circles can fit in one line
     _.times(this.circleIn, (i) => {
       const circle = this.draw.circle(CIRCLE_SIZE)
       circle.fill('#FF8000')
@@ -64,6 +68,7 @@ export class Stage extends Vue {
     const horizontalSpacing = 1.5 * CIRCLE_SIZE
     this.timer = Visibility.every(TIMER, () => {
       // Create a new circle array
+
       this.circles = []
       this.createCircles()
       if (this.integratedCircles.length >= MAX_CIRCLES) { this.reset() }
@@ -95,7 +100,7 @@ export class Stage extends Vue {
         }
 
       })
-              // Now to remove circles if the mass balance is negative 
+      // Now to remove circles if the mass balance is negative 
       if (this.circleOut > this.circleIn) {
         const numToPop = this.circleOut - this.circleIn
         _.times(numToPop, () => {
@@ -143,5 +148,8 @@ export class Stage extends Vue {
       Visibility.stop(this.timer)
       this.timer = undefined
     }
+  }
+  changeBalance() {
+    this.$dispatch('change-balance', [this.circleIn, this.circleOut, this.circleIn - this.circleOut])
   }
 }
