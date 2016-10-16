@@ -12,7 +12,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const autoprefixer = require('autoprefixer');
 
 var metadata = {
-    title: 'vue-typescript ts sample',
+    title: 'Mass Balances',
     host: 'localhost',
     port: 8080,
     ENV: ENV
