@@ -28,7 +28,7 @@ webpackJsonp([0,1],[
 	__webpack_require__(91);
 	__webpack_require__(100);
 	var home_1 = __webpack_require__(125);
-	var about_1 = __webpack_require__(129);
+	var about_1 = __webpack_require__(131);
 	Vue.use(VueRouter);
 	var app = Vue.extend({});
 	var router = new VueRouter();
@@ -16411,7 +16411,7 @@ webpackJsonp([0,1],[
 	        this.integratedCircles = [];
 	        this.circleIn = 1; // number of circles going in
 	        this.circleOut = 1; // number of circles going out
-	        this.rectHeight = 100;
+	        this.rectHeight = 100; // standard rect height
 	        this.width = 350; // default value
 	        this.height = 150; // default value
 	        this.pause = false;
@@ -16426,6 +16426,7 @@ webpackJsonp([0,1],[
 	        if (this.autoStart) {
 	            setTimeout(function () { return _this.startAnimation(); }, 100);
 	        }
+	        this.changeBalance();
 	    };
 	    Stage.prototype.constructScene = function () {
 	        this.draw = SVG(this.$el.querySelector('.stage')).size(this.width, this.height);
@@ -16444,7 +16445,6 @@ webpackJsonp([0,1],[
 	    Stage.prototype.createCircles = function () {
 	        var _this = this;
 	        var verticalSpacing = this.rectHeight / constants_1.CIRCLE_SIZE;
-	        var ciclePerLine = Math.floor(this.rectHeight / verticalSpacing); // how many circles can fit in one line
 	        _.times(this.circleIn, function (i) {
 	            var circle = _this.draw.circle(constants_1.CIRCLE_SIZE);
 	            circle.fill('#FF8000');
@@ -16542,7 +16542,20 @@ webpackJsonp([0,1],[
 	            this.timer = undefined;
 	        }
 	    };
+	    Stage.prototype.changeBalance = function () {
+	        this.$dispatch('change-balance', [this.circleIn, this.circleOut, this.circleIn - this.circleOut]);
+	    };
 	    __decorate([
+	        vue_typescript_1.Watch('changeBalance', { deep: true }), 
+	        __metadata('design:type', Number)
+	    ], Stage.prototype, "circleIn", void 0);
+	    __decorate([
+	        // number of circles going in
+	        vue_typescript_1.Watch('changeBalance', { deep: true }), 
+	        __metadata('design:type', Number)
+	    ], Stage.prototype, "circleOut", void 0);
+	    __decorate([
+	        // standard rect height
 	        vue_typescript_1.Prop, 
 	        __metadata('design:type', Number)
 	    ], Stage.prototype, "width", void 0);
@@ -38680,7 +38693,11 @@ webpackJsonp([0,1],[
 	    Katex.prototype.ready = function () {
 	        katex.render(this.expression, this.$el);
 	    };
+	    Katex.prototype.expressionChange = function () {
+	        katex.render(this.expression, this.$el);
+	    };
 	    __decorate([
+	        vue_typescript_1.Watch('expressionChange', { deep: true }),
 	        vue_typescript_1.Prop, 
 	        __metadata('design:type', String)
 	    ], Katex.prototype, "expression", void 0);
@@ -47051,6 +47068,7 @@ webpackJsonp([0,1],[
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var vue_typescript_1 = __webpack_require__(78);
+	var example_1 = __webpack_require__(126);
 	var HomeComponent = (function (_super) {
 	    __extends(HomeComponent, _super);
 	    function HomeComponent() {
@@ -47060,8 +47078,11 @@ webpackJsonp([0,1],[
 	    }
 	    HomeComponent = __decorate([
 	        vue_typescript_1.VueComponent({
-	            template: __webpack_require__(126),
-	            style: __webpack_require__(127)
+	            template: __webpack_require__(128),
+	            style: __webpack_require__(129),
+	            components: {
+	                'example': example_1.Example
+	            }
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], HomeComponent);
@@ -47073,18 +47094,71 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 126 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<section class=\"hero is-primary\">\r\n  <div class=\"hero-body\">\r\n    <div class=\"container\">\r\n      <div class=\"heading\">\r\n        <h1 class=\"title\">What is a Mass Balance?</h1>\r\n        <h2 class=\"subtitle\">\r\n          Using the law of conservation of mass\r\n        </h2>\r\n      </div>\r\n      <div class=\"content padding-top is-medium\">\r\n        <p>\r\n          A mass balance is an engineering technique where one applies the <em>law of conservation of mass</em> on a physical system to determine new information from it.\r\n          So what is the law of conservation of mass?\r\n        </p>\r\n        <blockquote class=\"remove-background-color\">\r\n          The law of conservation of mass states that for any system closed to all transfers of matter and energy, \r\n          the mass of the system must remain constant over time &hellip;\r\n          <strong style=\"color:white\">The law implies that mass can neither be created nor destroyed.</strong>\r\n        </blockquote>\r\n        <p>\r\n          From this infomation we can conclude that any mass flowing <em>IN</em> a system must be <em>ACCUMULATED</em> or flow <em>OUT</em> of said system.\r\n          This can be consicely defined by the following equation: &nbsp;\r\n          <katex expression=\" \\mathrm{IN} = \\mathrm{OUT} + \\mathrm{ACC}\"></katex>\r\n        </p>\r\n        <p>\r\n          A mass balance applies this law to a physical system by analyzing all its <em>input</em> streams and <em>output</em> streams. Lets start with a simple example, a 2D Box (the \"system\") with 1 ball flowing <em>in</em>\r\n          and <em>out</em>.        \r\n        </p>\r\n      </div>     \r\n    </div>\r\n\r\n  </div>\r\n</section>\r\n<section>\r\n  <div class=\"hero-body\">\r\n    <div class=\"container\">\r\n      <!--Example One-->\r\n      <div class=\"columns\">\r\n        <div class=\"column\">\r\n          <div class=\"heading\">            \r\n            <h3 class=\"subtitle\">\r\n              1 Ball In, 1 Ball Out\r\n            </h3>\r\n          </div>\r\n          <stage auto-start=\"true\"></stage>\r\n        </div>\r\n        <div class=\"column is-three-quarters\">\r\n          <div class=\"content\">\r\n            <h2 class=\"title\">Example One</h2>\r\n            <p>In this example, an orange ball is entering the blue box at a <em>rate</em> of 1 ball per second, or 1 ball/s. The orange ball is also leaving at 1 ball/s. We can express this with a mass balance equation as follows:</p>\r\n            <div style=\"max-width:275px\" class=\"box\">\r\n              <katex expression=\"1ball/s = 1ball/s + 0ball/s\"></katex>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <!--Example Two-->\r\n      <div class=\"columns\">\r\n\r\n        <div class=\"column\">\r\n          <div class=\"heading\">            \r\n            <h3 class=\"subtitle\">\r\n              1 Ball In, 1 Ball Out\r\n            </h3>\r\n          </div>\r\n          <stage auto-start=\"true\" show-controls=\"true\"></stage>\r\n        </div>\r\n        <div class=\"column is-three-quarters\">\r\n          <div class=\"content\">\r\n            <h2 class=\"title\">Example Two</h2>\r\n            <p>In this example you can change the <em>rate</em> at which the orange balls enter and leave the blue box. You can adjust this rate up to 5 ball/s. </p>\r\n            <p>Notice how the orange balls will <em>accumulate</em> in the blue box if the <em>IN</em> rate is greater than the <em>OUT</em> rate  </p>\r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</section>";
+	/* WEBPACK VAR INJECTION */(function(Vue) {"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var vue_typescript_1 = __webpack_require__(78);
+	var Example = (function (_super) {
+	    __extends(Example, _super);
+	    function Example() {
+	        _super.apply(this, arguments);
+	        this.message = 'blah';
+	    }
+	    Example.prototype.ready = function () {
+	    };
+	    Example = __decorate([
+	        vue_typescript_1.VueComponent({
+	            template: __webpack_require__(127),
+	            events: {
+	                'change-balance': function (msg) {
+	                    // `this` in event callbacks are automatically bound
+	                    // to the instance that registered it
+	                    this.message = msg[0] + "ball/s = " + msg[1] + "ball/s + " + msg[2] + "ball/s";
+	                }
+	            }
+	        }), 
+	        __metadata('design:paramtypes', [])
+	    ], Example);
+	    return Example;
+	}(Vue));
+	exports.Example = Example;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
 /* 127 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"columns\">\r\n\r\n\t<div class=\"column\">\r\n\t\t<div class=\"heading\">\r\n\t\t\t<slot name=\"title\"></slot>\r\n\t\t</div>\r\n\t\t<slot name=\"stage\"></slot>\r\n\t</div>\r\n\t<div class=\"column is-three-quarters\">\r\n\t\t<slot name=\"content\"></slot>\r\n\t\t<div style=\"max-width:275px\" class=\"box\">\r\n\t\t\t<katex :expression=\"message\"></katex>\r\n\t\t</div>\r\n\t</div>\r\n</div>";
+
+/***/ },
+/* 128 */
+/***/ function(module, exports) {
+
+	module.exports = "<section class=\"hero is-primary\">\r\n\t<div class=\"hero-body\">\r\n\t\t<div class=\"container\">\r\n\t\t\t<div class=\"heading\">\r\n\t\t\t\t<h1 class=\"title\">What is a Mass Balance?</h1>\r\n\t\t\t\t<h2 class=\"subtitle\">\r\n\t\t\t\t\tUsing the law of conservation of mass\r\n\t\t\t\t</h2>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"content padding-top is-medium\">\r\n\t\t\t\t<p>\r\n\t\t\t\t\tA mass balance is an engineering technique where one applies the <em>law of conservation of mass</em> on a physical\r\n\t\t\t\t\tsystem to determine new information from it. So what is the law of conservation of mass?\r\n\t\t\t\t</p>\r\n\t\t\t\t<blockquote class=\"remove-background-color\">\r\n\t\t\t\t\tThe law of conservation of mass states that for any system closed to all transfers of matter and energy, the mass of the\r\n\t\t\t\t\tsystem must remain constant over time &hellip;\r\n\t\t\t\t\t<strong style=\"color:white\">The law implies that mass can neither be created nor destroyed.</strong>\r\n\t\t\t\t</blockquote>\r\n\t\t\t\t<p>\r\n\t\t\t\t\tFrom this infomation we can conclude that any mass flowing <em>IN</em> a system must be <em>ACCUMULATED</em> or flow\r\n\t\t\t\t\t<em>OUT</em> of said system. This can be consicely defined by the following equation: &nbsp;\r\n\t\t\t\t\t<katex expression=\" \\mathrm{IN} = \\mathrm{OUT} + \\mathrm{ACC}\"></katex>\r\n\t\t\t\t</p>\r\n\t\t\t\t<p>\r\n\t\t\t\t\tA mass balance applies this law to a physical system by analyzing all its <em>input</em> streams and <em>output</em>\t\t\t\t\tstreams. Lets start with a simple example, a 2D Box (the \"system\") with 1 ball flowing <em>in</em> and <em>out</em>.\r\n\t\t\t\t</p>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t</div>\r\n</section>\r\n<section>\r\n\t<div class=\"hero-body\">\r\n\t\t<div class=\"container\">\r\n\t\t\t<!--Example One-->\r\n      <example>\r\n        <h3 slot=\"title\" class=\"subtitle\">\r\n          1 Ball In, 1 Ball Out\r\n        </h3>\r\n        <stage slot=\"stage\" auto-start=\"true\"></stage>\r\n        <div slot=\"content\" class=\"content\">\r\n          <h2 class=\"title\">Example One</h2>\r\n          <p>In this example, an orange ball is entering the blue box at a <em>rate</em> of 1 ball per second, or 1 ball/s. The\r\n            orange ball is also leaving at 1 ball/s. We can express this with a mass balance equation as follows:</p>\r\n        </div>\r\n      </example>\r\n\t\t\r\n\t\t\t<!--Example Two-->\r\n\t\t\t<example>\r\n\t\t\t\t<h3 slot=\"title\" class=\"subtitle\">\r\n\t\t\t\t\tVariable Rate\r\n\t\t\t\t</h3>\r\n        <stage slot=\"stage\" auto-start=\"true\" show-controls=\"true\"></stage>\r\n        <div slot=\"content\" class=\"content\">\r\n\t\t\t\t\t\t<h2 class=\"title\">Example Two</h2>\r\n\t\t\t\t\t\t<p>In this example you can change the <em>rate</em> at which the orange balls enter and leave the blue box. You can adjust\r\n\t\t\t\t\t\t\tthis rate up to 5 ball/s. </p>\r\n\t\t\t\t\t\t<p>Notice how the orange balls will <em>accumulate</em> in the blue box if the <em>IN</em> rate is greater than the <em>OUT</em>\t\t\t\t\t\t\trate </p>\r\n        </div>\r\n\t\t\t</example>\r\n\t\t</div>\r\n\t</div>\r\n</section>";
+
+/***/ },
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(128);
+	var content = __webpack_require__(130);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(8)(content, {});
@@ -47104,7 +47178,7 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 128 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(7)();
@@ -47118,7 +47192,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 129 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47140,7 +47214,7 @@ webpackJsonp([0,1],[
 	    };
 	    AboutComponent = __decorate([
 	        vue_typescript_1.VueComponent({
-	            template: __webpack_require__(130)
+	            template: __webpack_require__(132)
 	        }), 
 	        __metadata('design:paramtypes', [])
 	    ], AboutComponent);
@@ -47150,7 +47224,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 130 */
+/* 132 */
 /***/ function(module, exports) {
 
 	module.exports = "This is the about page...";
