@@ -34,31 +34,70 @@
 	<div class="hero-body">
 		<div class="container">
 			<!--Example One-->
-      <example>
-        <h3 slot="title" class="subtitle">
-          1 Ball In, 1 Ball Out
-        </h3>
-        <stage slot="stage" auto-start="true"></stage>
-        <div slot="content" class="content">
-          <h2 class="title">Example One</h2>
-          <p>In this example, an orange ball is entering the blue box at a <em>rate</em> of 1 ball per second, or 1 ball/s. The
-            orange ball is also leaving at 1 ball/s. We can express this with a mass balance equation as follows:</p>
-        </div>
-      </example>
-		
-			<!--Example Two-->
-			<example>
-				<h3 slot="title" class="subtitle">
-					Variable Rate
-				</h3>
-        <stage slot="stage" auto-start="true" show-controls="true"></stage>
-        <div slot="content" class="content">
-						<h2 class="title">Example Two</h2>
-						<p>In this example you can change the <em>rate</em> at which the orange balls enter and leave the blue box. You can adjust
-							this rate up to 5 ball/s. </p>
-						<p>Notice how the orange balls will <em>accumulate</em> in the blue box if the <em>IN</em> rate is greater than the <em>OUT</em>							rate </p>
-        </div>
-			</example>
+			<div class="content">
+				<example>
+					<h3 slot="title" class="subtitle">
+						1 Ball In, 1 Ball Out
+					</h3>
+					<stage slot="stage" auto-start="true"></stage>
+					<div slot="content" class="content">
+						<h2 class="title">Simple Example One</h2>
+						<p>In this example, an orange ball is entering the blue box at a <em>rate</em> of 1 ball per second, or 1 ball/s. The
+							orange ball is also leaving at 1 ball/s. We can express this with a mass balance equation as follows:</p>
+					</div>
+				</example>
+			
+				<!--Example Two-->
+				<example>
+					<h3 slot="title" class="subtitle">
+						Variable Rate
+					</h3>
+					<stage slot="stage" auto-start="true" show-controls="true"></stage>
+					<div slot="content" class="content">
+							<h2 class="title"> Simple Example Two</h2>
+							<p>In this example you can change the <em>rate</em> at which the orange balls enter and leave the blue box. You can adjust
+								this rate up to 5 ball/s. </p>
+							<p>Notice how the orange balls will <em>accumulate</em> in the blue box if the <em>IN</em> rate is greater than the <em>OUT</em>							rate </p>
+					</div>
+				</example>
+
+			</div>
 		</div>
+	</div>
+</section>
+<hr class="is-marginless">
+<section>
+	<div class="hero-body">
+		<div class="container">
+			<div class="heading">
+				<h1 class="title">
+					Increasing Complexity
+				</h1>
+				<h2 class="subtitle">
+					Multiple types of balls
+				</h2>
+			</div>
+			<div class="content padding-top">
+				<p>So far we have only dealt with only one type of ball (color) in our system.  However, what if there are mutliple types of balls?
+					How can we leverage and use the mass balance we have learned above for this new system?
+				</p>
+				<p>
+					We will see that for <em>each</em> type of ball, a mass balance is created. Concretely, if there are two colors of balls, orange and green,
+					then there will be two mass balance equations.
+				</p>
+				<div class="has-text-centered">
+					<p><katex expression=" \mathrm{IN_{orange}} = \mathrm{OUT_{orange}} + \mathrm{ACC_{orange}}"></katex></p>
+					<p><katex expression=" \mathrm{IN_{green}} = \mathrm{OUT_{green}} + \mathrm{ACC_{green}}"></katex></p>
+					<p>with a final equation being the summation of the two above</p>
+					<p><katex expression=" \mathrm{IN_{total}} = \mathrm{OUT_{total}} + \mathrm{ACC_{total}}"></katex></p>
+
+				</div>
+				<p>
+					Using this information we will construct the next example where a system has two <em>input</em> streams with distinct colors and 
+				</p>
+			</div>
+
+		</div>
+
 	</div>
 </section>

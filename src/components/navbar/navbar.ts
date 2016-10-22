@@ -15,7 +15,7 @@ class Link {
     template: require('./navbar.html')
 })
 export class Navbar extends Vue {
-
+    toggle: boolean = false
     @Prop
     inverted: boolean = true // default value
     // objects as default values don't need to be wrapped into functions
@@ -34,5 +34,8 @@ export class Navbar extends Vue {
 
     ready() {
         console.log(this.object.default);
+    }
+    toggleNav() {
+        this.toggle = !this.toggle
     }
 }

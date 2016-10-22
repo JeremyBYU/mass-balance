@@ -24,7 +24,7 @@ export class Stage extends Vue {
   rectHeight = 100 // standard rect height
 
   @Prop width: number = 350 // default value
-  @Prop height: number = 150 // default value
+  @Prop height: number = 110 // default value
   @Prop autoStart: boolean
   @Prop pause: boolean = false
   @Prop showControls: boolean

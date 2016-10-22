@@ -1,4 +1,4 @@
-import { VueComponent, Prop, Watch } from 'vue-typescript'
+import { VueComponent } from 'vue-typescript'
 @VueComponent({
   template: require('./example.html'),
   events: {
@@ -14,5 +14,5 @@ export class Example extends Vue {
   message: string = 'blah'
   ready() {
   }
- 
+
 }

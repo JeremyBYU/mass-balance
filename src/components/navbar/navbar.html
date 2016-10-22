@@ -9,17 +9,17 @@
    <div class="nav-item">Exploring Engineering</div>
   </div>
 
-  <span class="nav-toggle">
+  <span class="nav-toggle" @click="toggleNav">
     <span></span>
     <span></span>
     <span></span>
   </span>
 
-  <div class="nav-right nav-menu">
-    <a class="nav-item" href="#">
+  <div class="nav-right nav-menu" :class="{ 'is-active': toggle }">
+    <a class="nav-item" v-link="{ path: '/', exact: true, activeClass: 'is-active' }">
       Home
     </a>
-    <a class="nav-item" href="#">
+    <a class="nav-item" v-link="{ path: '/about', exact: true, activeClass: 'is-active' }">
       About
     </a>
 
